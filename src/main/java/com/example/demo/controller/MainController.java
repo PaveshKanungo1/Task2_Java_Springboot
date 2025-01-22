@@ -63,6 +63,15 @@ public class MainController {
         return new ResponseEntity<>(updatedCar, HttpStatus.OK);
     }
 
+    @GetMapping("/getCarByName")
+    public ResponseEntity<List<Car>> getCarByName(@RequestParam String name){
+        List<Car> cars = carRepo.findByName(name);
+        if (cars.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(cars, HttpStatus.OK);
+    }
+
     @PatchMapping("/updateCar/{id}")
     public ResponseEntity<Car> patchCar(@PathVariable Long id, @RequestBody Car car) {
         Car existingCar = carRepo.findById(id).orElseThrow(() ->
