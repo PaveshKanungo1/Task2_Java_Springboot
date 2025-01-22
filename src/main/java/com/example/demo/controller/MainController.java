@@ -63,9 +63,9 @@ public class MainController {
         return new ResponseEntity<>(updatedCar, HttpStatus.OK);
     }
 
-    @GetMapping("/getCarByName")
-    public ResponseEntity<List<Car>> getCarByName(@RequestParam String name){
-        List<Car> cars = carRepo.findByName(name);
+    @GetMapping("/getCarByBrand")
+    public ResponseEntity<List<Car>> getCarByBrand(@RequestParam String name){
+        List<Car> cars = carRepo.findByBrand(name);
         if (cars.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

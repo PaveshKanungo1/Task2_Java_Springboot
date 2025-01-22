@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface CarRepo extends JpaRepository<Car,Long> {
-    List<Car> findByName(String name);
+    List<Car> findByBrand(String brand);
 }
